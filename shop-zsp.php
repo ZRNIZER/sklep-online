@@ -4,27 +4,27 @@
     </head>
     <body>
         <?php
-            $con= new mysqli("127.0.0.1","root","","mydb");
-            $sql="SELECT id ,name FROM products WHERE 1";
-                if($wynik=$con->query($sql)){
-                    while ($row=$wynik->fetch_array()){
-                        echo 'id' .$row["id"].'name'.$row["name"];
-                    }
-                      }
-            if (isset($_POST["Submit"])){
-                if ($_POST["hasło"] == "sekret1"){
-                ?>
-                tutaj jest chroniona zawartosc...
-                <?php
+        if(!empty($_COOKIE["id"])){
+            header('Location: '.'stronaglowna.php');
+            
+        }
+
+            $con= new mysqli("127.0.0.1","root","","sklep");
+            print_r($_POST);
+            if(isset($_POST["login"]) && isset($_POST["password"])){
+                $q = 'SELECT id FROM user WHERE login="'.$_POST['login'].'" AND password="'.$_POST['password'].'"';
+                $res = $con->query($q);
+                $res2 = $res->fetch_array();
+                if(!empty($res2["id"])){
+                    setcookie("id",$res2["id"]);
                 }
             }
-            else{
-                echo "Nieprawdiłowe hasło";
-            }
         ?>
-        <form method="POST">
-            <input type="password" name="hasło" placeholder="Podaj hasło">
-            <input type="submit" name="submit" value="wyslij">
+        <form method="POST";>
+            <input name="login">
+            <input type="password" name="password">
+            <input type="submit">
         </form>
+        
     </body>
 </html>
