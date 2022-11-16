@@ -11,7 +11,7 @@
 
         $con= new mysqli("127.0.0.1","root","","sklep");
         $user_id = $_COOKIE['id'];
-        $q="SELECT p.id, p.name, p.price FROM `products` AS p JOIN product_status as pr ON pr.products_id = p.id JOIN user as u ON u.id = pr.user_id WHERE u.id = $user_id";
+        $q="SELECT p.id, p.name, p.price FROM `products` AS p";
         $res=$con->query($q);
         $max = $res->fetch_all(MYSQLI_ASSOC);
 
