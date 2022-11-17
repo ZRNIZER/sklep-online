@@ -17,7 +17,7 @@
 
         print_r($max);
         for($i=0; $i<count($max); $i++){
-            echo $max[$i]["name"]." <a href='details.php?products_id=".$max[$i]["id"]."'>szczegóły</a></br>";
+            echo $max[$i]["name"]." <a href='details.php?products_id=".$max[$i]["id"]."'>szczegóły</a><a href='zakup.php?products_id=".$max[$i]["id"]."'>zakup</a></br>";
         }
     ?>
     

@@ -6,10 +6,9 @@
     <body>
     <?php
         $con= new mysqli("127.0.0.1","root","","sklep");
-        if (isset($_POST["name"]) && isset($_POST["price"])){
-            $sql= "INSERT INTO products ( name ,price) VALUES (".$_POST["name"].",".$_POST["name"].")";
+            $sql= "INSERT INTO `product_status`( `sale`, `bought`, `exsposed`, `user_id`, `products_id`) VALUES ('yes','no','yes','".$_COOKIE["id"]."','".$_GET["products_id"]."')";
             $con->query($sql);
-        }
+        
     ?>
     <?php
     ?>
